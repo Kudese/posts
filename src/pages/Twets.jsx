@@ -18,7 +18,8 @@ const Tweets = () => {
 
   useEffect(() => {
     userList(page);
-  },[page,userList]);
+  },[page]);
+  
  const handleLearMore =()=>{
   setPage(page + 1)
  } 
