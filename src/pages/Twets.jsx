@@ -3,19 +3,18 @@ import CardUser from "../component/CardUser";
 import axios from "axios";
 import { useState } from "react";
 import css from "./Twets.module.css";
-import { useCallback } from "react";
 const Tweets = () => {
   const [page, setPage] = useState(1);
   const [dataUsers, setDataUsers] = useState([]);
  
-  const userList= useCallback( async (page)=> {
+  async function userList(page) {
     const  data  = await axios.get(
       "https://6469673b03bb12ac208c0c6d.mockapi.io/users",
       { params: { limit: 3, page: page } }
     );
     const newData =  dataUsers.concat(data.data)
     setDataUsers(newData);
-  },[dataUsers])
+  }
 
   useEffect(() => {
     userList(page);
