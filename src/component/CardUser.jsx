@@ -8,11 +8,17 @@ import { changStatusFolofer } from "../redux/folowers/slice.folower";
 
 const CardUser = (props) => {
   const { avatar, name, tweets, followers, id } = props.data;
-  const folowerList = useSelector(state=>state.folowers)
-  const dispathc = useDispatch()
- console.log(folowerList)
-const togleFollow = (id)=>{
- dispathc(changStatusFolofer(id))
+  const folowerList = useSelector((state) => state.folowers);
+  const dispathc = useDispatch();
+  const inFollow = folowerList.includes(id);
+  console.log(inFollow);
+
+  const togleFollow = (id) => {
+    dispathc(changStatusFolofer(id));
+  };
+const handleFolowerText=()=>{
+ return `${inFollow? Number(followers)+1:followers}` 
+ 
 }
 
   return (
@@ -26,8 +32,10 @@ const togleFollow = (id)=>{
       </div>
       <div className={css.text_container}>
         <p className={css.tweets}>{tweets} tweets</p>
-        <p className={css.followers}>{followers} followers</p>
-        <button onClick={()=>togleFollow(id)} className={css.btn}>follow </button>
+        <p className={css.followers}>{handleFolowerText()+"followers"}</p>
+        <button onClick={() => togleFollow(id)} className={ inFollow? css.btn_active:css.btn}>
+          {inFollow?`following`:`follow`}
+        </button>
       </div>
     </div>
   );
