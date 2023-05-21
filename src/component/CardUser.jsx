@@ -11,8 +11,6 @@ const CardUser = (props) => {
   const folowerList = useSelector((state) => state.folowers);
   const dispathc = useDispatch();
   const inFollow = folowerList.includes(id);
-  console.log(inFollow);
-
   const togleFollow = (id) => {
     dispathc(changStatusFolofer(id));
   };

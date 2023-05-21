@@ -2,14 +2,23 @@ import { createSlice } from "@reduxjs/toolkit";
 import initialState from "../initialState.json";
 
 export const sliceFolowers = createSlice({
-    name: "folowers",
-    initialState: initialState.folowers,
-    reducers: {
-      changStatusFolofer(state,{payload}){ 
-
-       state.folowers.push(payload)
-       
+  name: "folowers",
+  initialState: initialState.folowers,
+  reducers: {
+    changStatusFolofer(state, { payload }) {
+      if ([...state.folowers].includes(payload)) {
+        console.log([...state.folowers]);
+        console.log([...state.folowers].indexOf(payload));
+        const list = [...state.folowers]
+        list.splice(
+          [...state.folowers].indexOf(payload),
+          1
+        );
+        state.folowers= list
+      } else {
+        state.folowers.push(payload);
       }
     },
-  });
-  export const {changStatusFolofer}= sliceFolowers.actions
+  },
+});
+export const { changStatusFolofer } = sliceFolowers.actions;

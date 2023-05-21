@@ -18,7 +18,6 @@ const Tweets = () => {
     userList(page);
   }, [page]);
  const changePage =(value)=>{
-  console.log(value)
   setPage(prevstate=>{
     console.log(prevstate)
     return( prevstate+value)
