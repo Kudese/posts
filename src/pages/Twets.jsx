@@ -6,23 +6,19 @@ import css from "./Twets.module.css";
 const Tweets = () => {
   const [page, setPage] = useState(1);
   const [dataUsers, setDataUsers] = useState([]);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+ 
   async function userList(page) {
     const  data  = await axios.get(
       "https://6469673b03bb12ac208c0c6d.mockapi.io/users",
       { params: { limit: 3, page: page } }
     );
-    const newData = await dataUsers.push(...data.data)
-    console.log(newData)
-    setDataUsers(data.data);
+    const newData =  dataUsers.concat(data.data)
+    setDataUsers(newData);
   }
-  console.log(page)
-  console.log(dataUsers)
-  
+
   useEffect(() => {
     userList(page);
-  },[page]);
-
+  },[page,userList]);
  const handleLearMore =()=>{
   setPage(page + 1)
  } 

@@ -5,6 +5,7 @@
 }
 .conteiner {
   display: flex;
+  flex-wrap: wrap;
 }
 .btn {
   font-size: 20px;
