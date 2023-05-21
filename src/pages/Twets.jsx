@@ -6,38 +6,37 @@ import css from "./Twets.module.css";
 const Tweets = () => {
   const [page, setPage] = useState(1);
   const [dataUsers, setDataUsers] = useState([]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   async function userList(page) {
     const  data  = await axios.get(
       "https://6469673b03bb12ac208c0c6d.mockapi.io/users",
       { params: { limit: 3, page: page } }
     );
-   
-    setDataUsers(data.data);
+    const newData = dataUsers.push(...data)
+    console.log(newData)
+    setDataUsers(data);
   }
+  console.log(page)
+  console.log(dataUsers)
+  
   useEffect(() => {
     userList(page);
-  }, [page]);
- const changePage =(value)=>{
-  setPage(prevstate=>{
-    console.log(prevstate)
-    return( prevstate+value)
-  })
- }
+  },[page, userList]);
+
+ const handleLearMore =()=>{
+  setPage(page + 1)
+ } 
 
   return (
     <div>
       <div className={css.conteiner}>
         
-        {dataUsers.map((user) => {
+        {dataUsers?.map((user) => {
           return <CardUser key={user.id} data={user} />;
         })}
       </div>
       <div className={css.selector}>
-        <button onClick={()=>changePage(-1)} className={css.btn} disabled={page <= 1 ? true : false}>
-          -
-        </button>
-        <span className={css.page}>{page}</span>
-        <button onClick={()=>changePage(1)} className={css.btn}>+</button>
+        <button onClick={handleLearMore} className={css.btn} >Lear more ...</button>
       </div>
     </div>
   );

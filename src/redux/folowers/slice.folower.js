@@ -7,8 +7,6 @@ export const sliceFolowers = createSlice({
   reducers: {
     changStatusFolofer(state, { payload }) {
       if ([...state.folowers].includes(payload)) {
-        console.log([...state.folowers]);
-        console.log([...state.folowers].indexOf(payload));
         const list = [...state.folowers]
         list.splice(
           [...state.folowers].indexOf(payload),
