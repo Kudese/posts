@@ -7,11 +7,12 @@ const Tweets = () => {
   const [page, setPage] = useState(1);
   const [dataUsers, setDataUsers] = useState([]);
   async function userList(page) {
-    const { data } = await axios.get(
+    const  data  = await axios.get(
       "https://6469673b03bb12ac208c0c6d.mockapi.io/users",
       { params: { limit: 3, page: page } }
     );
-    setDataUsers(data);
+   
+    setDataUsers(data.data);
   }
   useEffect(() => {
     userList(page);
