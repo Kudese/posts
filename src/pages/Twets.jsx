@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import CardUser from "../component/CardUser";
 import axios from "axios";
 import { useState } from "react";
-import css from './Twets.module.css'
+import css from "./Twets.module.css";
 const Tweets = () => {
   const [page, setPage] = useState(1);
   const [dataUsers, setDataUsers] = useState([]);
@@ -16,16 +16,30 @@ const Tweets = () => {
   useEffect(() => {
     userList(page);
   }, [page]);
+ const changePage =(value)=>{
+  console.log(value)
+  setPage(prevstate=>{
+    console.log(prevstate)
+    return( prevstate+value)
+  })
+ }
 
-  return (<div >
-    <div className={css.conteiner}>
-      {" "}
-      {dataUsers.map((user) => {
-        return <CardUser key={user.id} data={user} />;
-      })}
-    </div>
-      <div className={css.}></div>
+  return (
+    <div>
+      <div className={css.conteiner}>
+        
+        {dataUsers.map((user) => {
+          return <CardUser key={user.id} data={user} />;
+        })}
       </div>
+      <div className={css.selector}>
+        <button onClick={()=>changePage(-1)} className={css.btn} disabled={page <= 1 ? true : false}>
+          -
+        </button>
+        <span className={css.page}>{page}</span>
+        <button onClick={()=>changePage(1)} className={css.btn}>+</button>
+      </div>
+    </div>
   );
 };
 
