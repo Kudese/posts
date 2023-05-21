@@ -12,16 +12,16 @@ const Tweets = () => {
       "https://6469673b03bb12ac208c0c6d.mockapi.io/users",
       { params: { limit: 3, page: page } }
     );
-    const newData = dataUsers.push(...data)
+    const newData = await dataUsers.push(...data.data)
     console.log(newData)
-    setDataUsers(data);
+    setDataUsers(data.data);
   }
   console.log(page)
   console.log(dataUsers)
   
   useEffect(() => {
     userList(page);
-  },[page, userList]);
+  },[page]);
 
  const handleLearMore =()=>{
   setPage(page + 1)
