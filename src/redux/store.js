@@ -1,4 +1,4 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
+import { configureStore, } from "@reduxjs/toolkit";
 
 import initialState from "./initialState.json";
 import {
@@ -10,38 +10,19 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-import { combineReducers } from "redux";
+
 import persistReducer from "redux-persist/es/persistReducer";
 import storage from 'redux-persist/lib/storage'
+import { sliceFolowers } from "./folowers/slice.folower";
 
-const sliceFolowers = createSlice({
-  name: "folowers",
-  initialState: initialState.folowers,
-  reducers: {
-    changStatusFolofer(state){
-      state.folowers=true
-      
-    }
-  },
-});
-const sliceBaseFolowers= createSlice({
-  name:'basefolowers',
-  initialState:initialState.basefolowers,
-  reducers:{
-    changValueFolofer(state){
-      state.basefolowers++
-    }
-  }
-})
 
 const persistConfig = {
-  key: 'root',
-  storage
+  key: 'followerList',
+  storage,
+  whitelist:['folowers']
 }
 
-const rootReduser = combineReducers({ folowers: sliceFolowers.reducer,
-basefolowers: sliceBaseFolowers.reducer });
-const persistedReducer = persistReducer(persistConfig, rootReduser)
+const persistedReducer = persistReducer(persistConfig,sliceFolowers.reducer)
 
 export const store = configureStore({
   reducer: persistedReducer,

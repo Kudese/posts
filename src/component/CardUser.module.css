@@ -1,0 +1,90 @@
+.container {
+  position: absolute;
+  width: 380px;
+  height: 460px;
+  border-radius: 20px;
+  background: linear-gradient(
+    114.99deg,
+    #471ca9 -0.99%,
+    #5736a3 54.28%,
+    #4b2a99 78.99%
+  );
+  box-shadow: -2.5777px 6.87386px 20.6216px rgba(0, 0, 0, 0.23);
+}
+.picture {
+  width: 308px;
+  height: 168px;
+  margin-top: 28px;
+  margin-left: 36px;
+}
+.logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+.avatat_container {
+  margin-top: -18px;
+  position: relative;
+  background-repeat: no-repeat;
+}
+.avatar {
+  position: absolute;
+  top: 8px;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  left: 158px;
+}
+.avatat_ellipse {
+  position: absolute;
+  top: 0;
+  left: 144px;
+}
+.avatat_recrangle {
+  position: absolute;
+  top: 36px;
+}
+.text_container {
+  margin-top: 88px;
+  display: flex;
+  flex-direction: column;
+}
+.tweets {
+  display: block;
+  margin: 10px auto 0 auto;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  text-transform: uppercase;
+  color: #ebd8ff;
+}
+.followers {
+  display: block;
+  margin: 16px auto 0 auto;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  text-transform: uppercase;
+  color: #ebd8ff;
+}
+
+.btn {
+  display: block;
+  width: 196px;
+  height: 50px;
+  margin: 26px auto 0 auto;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  text-transform: uppercase;
+  color: #373737;
+  background: #ebd8ff;
+  box-shadow: 0px 3.43693px 3.43693px rgba(0, 0, 0, 0.25);
+  border-radius: 10.3108px;
+}
